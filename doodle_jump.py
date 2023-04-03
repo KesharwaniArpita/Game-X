@@ -10,9 +10,9 @@ def update_platforms(my_list,y,change):
                     my_list[i][1]-=change
             else:
                 pass
-            for item in range(len(my_list)):
-                if my_list[item][1]>500:
-                    my_list[item]=[random.randint(10,350),50,70,10]
+            for items in range(len(my_list)):
+                if my_list[items][1]>500:
+                    my_list[items]=[random.randint(10,350),50,70,10]
                     score+=1
             return my_list
         else:
