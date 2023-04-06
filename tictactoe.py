@@ -2,25 +2,23 @@ import pygame as pg
 from pygame.locals import *
 import time
 
-
-
-
 class TicTacToe:
     def game_opening():
-        global draw, X_O,font, T,screen,opening,width,winner,o_img,white,line_color,fps,CLOCK,x_img,height,width
-        screen.blit(opening,(0,0))
+        global X_O, CLOCK, T
+        global draw,font, screen,open,width,winner,o_img,white,l_col,fps,x_img,height,width
+        screen.blit(open,(0,0))
         pg.display.update()
         time.sleep(1.5)
         screen.fill(white)
-        pg.draw.line(screen,line_color,(width/3,0),(width/3, height),7)
-        pg.draw.line(screen,line_color,(width/3*2,0),(width/3*2, height),7)
-        pg.draw.line(screen,line_color,(0,height/3),(width, height/3),7)
-        pg.draw.line(screen,line_color,(0,height/3*2),(width, height/3*2),7)
+        pg.draw.line(screen,l_col,(width/3,0),(width/3, height),7)
+        pg.draw.line(screen,l_col,(width/3*2,0),(width/3*2, height),7)
+        pg.draw.line(screen,l_col,(0,height/3),(width, height/3),7)
+        pg.draw.line(screen,l_col,(0,height/3*2),(width, height/3*2),7)
         game_status.draw_status()
 
-
     def reset_game():
-        global draw, X_O,font, T,screen,opening,width,winner,o_img,white,line_color,fps,CLOCK,x_img,height,width
+        global X_O, CLOCK, T
+        global draw, font, screen,open,width,winner,o_img,white,l_col,fps,x_img,height,width
         time.sleep(1.5)
         X_O = 'X'
         draw = False
@@ -28,11 +26,11 @@ class TicTacToe:
         winner=None
         T = [[None]*3,[None]*3,[None]*3]
 
-
-    
+ 
 class game_status:
     def draw_status():
-        global draw, X_O,font, T,screen,opening,width,winner,o_img,white,line_color,fps,CLOCK,x_img,height,width
+        global X_O, CLOCK, T
+        global draw, font, screen,open,width,winner,o_img,white,l_col,fps,x_img,height,width
         if winner is None:
             message = X_O.upper() + "'s Turn"
         else:
@@ -47,7 +45,8 @@ class game_status:
 
 
     def check_win():
-            global draw, X_O,font, T,screen,opening,width,winner,o_img,white,line_color,fps,CLOCK,x_img,height,width
+            global X_O, CLOCK, T
+            global draw, font, screen,open,width,winner,o_img,white,l_col,fps,x_img,height,width
             for row in range (0,3):
                 if ((T [row][0] == T[row][1] == T[row][2]) and(T [row][0] is not None)):
 
@@ -81,7 +80,8 @@ class game_status:
 
 class Input:
     def drawXO(row,col):
-            global draw, X_O,font, T,screen,opening,width,winner,o_img,white,line_color,fps,CLOCK,x_img,height,width
+            global X_O, CLOCK, T
+            global draw, font, screen,open,width,winner,o_img,white,l_col,fps,x_img,height,width
             if row==1:
                 posx = 30
 
@@ -112,7 +112,8 @@ class Input:
 
 
     def userClick():
-            global draw, X_O,font, T,screen,opening,width,winner,white,o_img,line_color,fps,CLOCK,x_img,height,width
+            global X_O, CLOCK, T
+            global draw, font, screen,open,width,winner,white,o_img,l_col,fps,x_img,height,width
             x,y = pg.mouse.get_pos()
             if(x<width/3):
                 col = 1
@@ -138,7 +139,8 @@ class Input:
                 game_status.check_win()
             
 def start_ttt():
-    global draw,font, X_O, T,screen,opening,width,winner,white,line_color,fps,CLOCK,x_img,height,width,o_img
+    global X_O, CLOCK, T
+    global draw,font,screen,open,width,winner,white,l_col,fps,x_img,height,width,o_img
     draw = False
     X_O = 'X'
     T = [[None]*3,[None]*3,[None]*3]
@@ -147,17 +149,17 @@ def start_ttt():
     width = 400
     height = 400
     white = (255, 255, 255)
-    line_color = (10,10,10)
+    l_col = (10,10,10)
     fps = 30
     CLOCK = pg.time.Clock()
     screen = pg.display.set_mode((width, height+100),0,32)
     pg.display.set_caption("Tic Tac Toe")
-    opening = pg.image.load('img/tic_tac_opening.png')
+    open = pg.image.load('img/tic_tac_opening.png')
     x_img = pg.image.load('img/x.png')
     o_img = pg.image.load('img/o.png')
     x_img = pg.transform.scale(x_img, (80,80))
     o_img = pg.transform.scale(o_img, (80,80))
-    opening = pg.transform.scale(opening, (width, height+100))
+    open = pg.transform.scale(open, (width, height+100))
     font = pg.font.Font("font/Calibri.ttf", 30)
     
 

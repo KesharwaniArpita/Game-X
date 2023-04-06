@@ -29,7 +29,7 @@ def check_collisions(rect_list,j):
                 j=True
         return j
 
-#update player's position
+#update player position
 def update_player(y):
         global font,white,black,gray,width,check,height,background,player,fps,timer,score,high_score,game_over,player_x,player_y,platforms,jump,y_change,x_change,score_last,super_jumps,super_last,player_speed,screen,running
     
